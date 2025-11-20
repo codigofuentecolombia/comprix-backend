@@ -75,11 +75,13 @@ func Start(cnf dto.Config, httpHandler *gin.Engine) {
 func Listen(server *http.Server, exit chan os.Signal) {
 	// Inicializar listener
 	go func() {
+		log.Printf("Starting server on %s", server.Addr)
 		// Verificar que no haya error y si hay error que sea distinto al cierre de servidor
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("Listen gin server: %s\n", err)
 		}
 	}()
+	log.Printf("Server is ready to handle requests at %s", server.Addr)
 	// Esperar para salir
 	<-exit
 	// Apagar servidor
