@@ -18,8 +18,19 @@ FROM alpine:latest
 
 WORKDIR /app
 
-# Install ca-certificates for HTTPS
-RUN apk --no-cache add ca-certificates
+# Install dependencies for Chromium and chromedp
+RUN apk --no-cache add \
+    ca-certificates \
+    chromium \
+    chromium-chromedriver \
+    nss \
+    freetype \
+    harfbuzz \
+    ttf-freefont
+
+# Set Chromium path for chromedp
+ENV CHROME_BIN=/usr/bin/chromium-browser \
+    CHROME_PATH=/usr/lib/chromium/
 
 # Create necessary directories
 RUN mkdir -p settings logs storage assets
