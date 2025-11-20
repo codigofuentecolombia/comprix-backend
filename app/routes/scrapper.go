@@ -13,5 +13,5 @@ func ScrapperRoutes(config dto.Config, router *gin.RouterGroup) {
 	scrapperController := controller.NewScrapperController(&config)
 	
 	// Ruta protegida solo para administradores
-	router.POST("/admin/scrapper/start", server.AdminMiddleware(config), scrapperController.StartScrapper)
+	router.POST("/admin/scrapper/start", server.ValidateJwt(config), server.Role("admin"), scrapperController.StartScrapper)
 }
