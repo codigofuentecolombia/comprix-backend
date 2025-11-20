@@ -1,0 +1,30 @@
+# Logs
+logs/
+*.log
+
+# Archivos temporales
+*.tmp
+*.swp
+*~
+
+# Binarios
+*.exe
+*.dll
+*.so
+*.dylib
+main
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Go
+vendor/
+
+# No ignorar conf.example.yaml
+!settings/conf.example.yaml

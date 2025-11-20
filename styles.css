@@ -1,0 +1,526 @@
+/* Variables de colores personalizadas */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-bg-light: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --primary-gradient: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+  --accent-color: #c0392b;
+}
+
+
+header, .header, .top-bar, nav {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(15px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(15px) saturate(180%) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  box-shadow: 0 8px 32px 0 var(--shadow-color) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Logo con efecto hover */
+.logo, .logo img {
+  transition: transform 0.3s ease, filter 0.3s ease !important;
+}
+
+.logo:hover, .logo:hover img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 5px 15px rgba(192, 57, 43, 0.678));
+}
+
+/* Botón primario con gradiente */
+.btn-primary, .add-to-cart, input[type="submit"] {
+  background: #c0392b !important;
+  background: linear-gradient(90deg, rgba(192, 57, 43, 1) 0%, rgba(231, 76, 60, 1) 50%, rgba(242, 48, 27, 1) 100%) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.product-card, .item, .product-item, .card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(12px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 32px var(--shadow-color) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  overflow: hidden;
+}
+
+.product-card:hover, .item:hover, .product-item:hover, .card:hover {
+  transform: translateY(-10px) scale(1.02) !important;
+  box-shadow: 0 15px 45px rgba(192, 57, 43, 0.3) !important;
+  border-color: rgba(192, 57, 43, 0.5) !important;
+}
+
+/* Imagen de producto con efecto */
+.product-card img, .item img, .product-image {
+  transition: transform 0.5s ease, filter 0.3s ease !important;
+  border-radius: 15px !important;
+}
+
+.product-card:hover img, .item:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+
+.search-bar, input[type="search"], .search-input, 
+input[type="text"], input[type="email"], textarea, select {
+  background: white !important;
+  border: 1px solid #ddd !important;
+  border-radius: 15px !important;
+  padding: 12px 20px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px var(--shadow-color) !important;
+}
+
+.search-bar:focus, input:focus, textarea:focus, select:focus {
+  outline: none !important;
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.2) !important;
+  transform: translateY(-2px);
+  background: white !important;
+}
+
+/* Resultados de búsqueda */
+.search-results, .search-dropdown, .autocomplete-results, 
+.search-suggestions, [class*="search"][class*="results"],
+[class*="dropdown"][class*="search"] {
+  background: white !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid #ddd !important;
+  border-radius: 15px !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+  margin-top: 5px !important;
+  overflow: hidden !important;
+}
+
+.search-results .item, .search-results li,
+.search-dropdown .item, .search-dropdown li,
+.autocomplete-results .item, .autocomplete-results li {
+  background: white !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  transition: background 0.2s ease !important;
+}
+
+.search-results .item:hover, .search-results li:hover,
+.search-dropdown .item:hover, .search-dropdown li:hover,
+.autocomplete-results .item:hover, .autocomplete-results li:hover {
+  background: #f8f8f8 !important;
+}
+
+
+footer, .footer {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(15px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(15px) saturate(180%) !important;
+  border-top: 1px solid var(--glass-border) !important;
+  box-shadow: 0 -8px 32px var(--shadow-color) !important;
+  padding: 40px 20px !important;
+}
+
+
+.cart, .cart-sidebar, .minicart, .shopping-cart {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2) !important;
+}
+
+
+.badge, .label, .tag, .discount-badge {
+  background: var(--primary-gradient) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: 10px !important;
+  padding: 5px 12px !important;
+  font-weight: 600 !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3) !important;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+
+.modal, .popup, .overlay-content {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 25px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+}
+
+
+.menu, .navigation, nav ul {
+  background: transparent !important;
+}
+
+.menu li a, .navigation a, nav a {
+  position: relative;
+  transition: all 0.3s ease !important;
+  padding: 10px 15px !important;
+  border-radius: 10px !important;
+}
+
+.menu li a:hover, .navigation a:hover, nav a:hover {
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: blur(8px) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--shadow-color) !important;
+}
+
+
+.price, .product-price, .price-value {
+  font-weight: 700 !important;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text;
+  font-size: 1.3em !important;
+  display: inline-block;
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card, .item, .card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+
+* {
+  scroll-behavior: smooth;
+}
+
+/* Barra de scroll personalizada */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-gradient);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #a93226 0%, #c0392b 100%);
+  background-clip: padding-box;
+}
+
+
+.category, .category-item, .categories {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 15px !important;
+  padding: 20px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 5px 20px var(--shadow-color) !important;
+}
+
+.category:hover, .category-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(192, 57, 43, 0.3) !important;
+}
+
+
+@media (max-width: 768px) {
+  .btn, button, .button {
+    padding: 10px 20px !important;
+  }
+  
+  .product-card, .card {
+    border-radius: 15px !important;
+  }
+  
+  header, nav {
+    backdrop-filter: blur(10px) !important;
+  }
+}
+
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+
+.depth-1 {
+  box-shadow: 0 2px 10px var(--shadow-color) !important;
+}
+
+.depth-2 {
+  box-shadow: 0 5px 20px var(--shadow-color) !important;
+}
+
+.depth-3 {
+  box-shadow: 0 10px 40px var(--shadow-color) !important;
+}
+
+
+/* ============================================
+   ESTILOS PARA CHECKOUT TIENDANUBE
+   ============================================ */
+
+/* Botones del checkout */
+button[type="submit"], 
+button[class*="button"],
+button[class*="btn"],
+.checkout-button,
+[class*="Button"],
+[class*="Btn"] {
+  background: #c0392b !important;
+  background: linear-gradient(90deg, rgba(192, 57, 43, 1) 0%, rgba(231, 76, 60, 1) 50%, rgba(242, 48, 27, 1) 100%) !important;
+  border: none !important;
+  color: white !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+button[type="submit"]:hover,
+button[class*="button"]:hover,
+.checkout-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 20px rgba(192, 57, 43, 0.4) !important;
+}
+
+/* Inputs y formularios del checkout */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select,
+[class*="Input"],
+[class*="input"],
+[class*="field"] input,
+[class*="Field"] input {
+  background: white !important;
+  border: 1px solid #ddd !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  transition: all 0.3s ease !important;
+  font-size: 14px !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: #c0392b !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1) !important;
+}
+
+/* Tarjetas y contenedores */
+[class*="card"],
+[class*="Card"],
+[class*="container"],
+[class*="Container"],
+[class*="section"],
+[class*="Section"],
+[class*="box"],
+[class*="Box"] {
+  background: white !important;
+  border: 1px solid #e8e8e8 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Resumen de compra */
+[class*="summary"],
+[class*="Summary"],
+[class*="cart"],
+[class*="Cart"],
+aside[class*="sidebar"],
+aside[class*="Sidebar"] {
+  background: white !important;
+  border: 1px solid #e8e8e8 !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Items del carrito */
+[class*="item"],
+[class*="Item"],
+[class*="product"],
+[class*="Product"] {
+  background: white !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  padding: 15px 0 !important;
+}
+
+/* Precios en el checkout */
+[class*="price"],
+[class*="Price"],
+[class*="total"],
+[class*="Total"],
+[class*="amount"],
+[class*="Amount"] {
+  color: #c0392b !important;
+  font-weight: 700 !important;
+}
+
+/* Enlaces y botones secundarios */
+a[class*="link"],
+a[class*="Link"],
+button[class*="secondary"],
+button[class*="Secondary"] {
+  color: #c0392b !important;
+  transition: all 0.3s ease !important;
+}
+
+a:hover,
+button[class*="secondary"]:hover {
+  color: #a93226 !important;
+  text-decoration: underline !important;
+}
+
+/* Radio buttons y checkboxes */
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: #c0392b !important;
+}
+
+/* Badges y etiquetas */
+[class*="badge"],
+[class*="Badge"],
+[class*="tag"],
+[class*="Tag"],
+[class*="label"],
+[class*="Label"] {
+  background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%) !important;
+  color: white !important;
+  border-radius: 6px !important;
+  padding: 4px 10px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+/* Header del checkout */
+header[class*="header"],
+header[class*="Header"],
+nav[class*="nav"],
+nav[class*="Nav"] {
+  background: white !important;
+  border-bottom: 1px solid #e8e8e8 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Pasos del checkout */
+[class*="step"],
+[class*="Step"],
+[class*="stage"],
+[class*="Stage"] {
+  color: #999 !important;
+  transition: all 0.3s ease !important;
+}
+
+[class*="step"][class*="active"],
+[class*="Step"][class*="active"],
+[class*="step"][class*="current"],
+[class*="Step"][class*="current"] {
+  color: #c0392b !important;
+  border-color: #c0392b !important;
+}
+
+/* Mensajes de error */
+[class*="error"],
+[class*="Error"],
+[class*="invalid"],
+[class*="Invalid"] {
+  color: #c0392b !important;
+  font-size: 13px !important;
+}
+
+/* Spinners y loaders */
+[class*="spinner"],
+[class*="Spinner"],
+[class*="loader"],
+[class*="Loader"] {
+  border-color: #c0392b !important;
+  border-top-color: transparent !important;
+}
+
+/* Descuentos y cupones */
+[class*="discount"],
+[class*="Discount"],
+[class*="coupon"],
+[class*="Coupon"] {
+  background: #fff5f5 !important;
+  border: 1px solid #ffd4d4 !important;
+  color: #c0392b !important;
+  border-radius: 8px !important;
+  padding: 10px !important;
+}
+
+/* Footer del checkout */
+footer[class*="footer"],
+footer[class*="Footer"] {
+  background: white !important;
+  border-top: 1px solid #e8e8e8 !important;
+  padding: 20px !important;
+  text-align: center !important;
+}
+
+/* Seguridad/Trust badges */
+[class*="trust"],
+[class*="Trust"],
+[class*="secure"],
+[class*="Secure"],
+[class*="safe"],
+[class*="Safe"] {
+  color: #27ae60 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
