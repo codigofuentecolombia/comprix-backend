@@ -29,7 +29,9 @@ func (ctr ScrapperController) StartScrapper(ginContext *gin.Context) {
 	// Ejecutar scrapper en background
 	go ctr.runScrapper()
 	
-	ginContext.JSON(200, server.OK("Scrapper iniciado en background", nil))
+	server.Response(ginContext, 200, map[string]string{
+		"message": "Scrapper iniciado en background",
+	})
 }
 
 func (ctr ScrapperController) runScrapper() {
