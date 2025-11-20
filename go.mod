@@ -2,8 +2,6 @@ module comprix
 
 go 1.23.0
 
-toolchain go1.23.4
-
 require (
 	github.com/agnivade/levenshtein v1.2.1
 	github.com/xuri/excelize/v2 v2.9.0
