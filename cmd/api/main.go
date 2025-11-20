@@ -5,6 +5,12 @@ import (
 	"comprix/app/domain/dto"
 	"comprix/app/routes"
 	"comprix/app/scrapper/pages"
+	pages_alem "comprix/app/scrapper/pages/alem"
+	pages_carrefour "comprix/app/scrapper/pages/carrefour"
+	pages_hiperlibertad "comprix/app/scrapper/pages/hiperlibertad"
+	pages_jumbo "comprix/app/scrapper/pages/jumbo"
+	pages_masonline "comprix/app/scrapper/pages/masonline"
+	pages_vea "comprix/app/scrapper/pages/vea"
 	"comprix/app/server"
 	"flag"
 	"fmt"
@@ -128,42 +134,35 @@ func startScraper(config dto.Config) {
 	wg := sync.WaitGroup{}
 	
 	// Primer grupo de scrapers
-	wg.Add(3)
+	wg.Add(2)
 	go func() {
 		defer wg.Done()
 		log.Println("Scrapeando Alem...")
-		pages.Alem(config)
-	}()
-	go func() {
-		defer wg.Done()
+		analizeAlemCategories(&config)
 		log.Println("Scrapeando Carrefour...")
-		pages.Carrefour(config)
-	}()
-	go func() {
-		defer wg.Done()
+		pages.AnalizePageProductsByCategories(&config, pages_carrefour.Initialize, 1, true)
 		log.Println("Scrapeando Jumbo...")
-		pages.Jumbo(config)
+		pages.AnalizePageProductsByCategories(&config, pages_jumbo.Initialize, 1, true)
 	}()
-	wg.Wait()
 	
-	// Segundo grupo de scrapers
-	wg.Add(3)
 	go func() {
 		defer wg.Done()
 		log.Println("Scrapeando Vea...")
-		pages.Vea(config)
-	}()
-	go func() {
-		defer wg.Done()
+		pages.AnalizePageProductsByCategories(&config, pages_vea.Initialize, 1, true)
 		log.Println("Scrapeando Hiperlibertad...")
-		pages.Hiperlibertad(config)
-	}()
-	go func() {
-		defer wg.Done()
+		pages.AnalizePageProductsByCategories(&config, pages_hiperlibertad.Initialize, 1, true)
 		log.Println("Scrapeando MasOnline...")
-		pages.MasOnline(config)
+		pages.AnalizePageProductsByCategories(&config, pages_masonline.Initialize, 1, true)
 	}()
+	
 	wg.Wait()
 	
 	log.Println("✅ Scraper completado exitosamente")
+}
+
+func analizeAlemCategories(config *dto.Config) {
+	svc, err := pages_alem.Initialize(config)
+	if err == nil {
+		svc.GetCategoryProducts()
+	}
 }
