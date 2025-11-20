@@ -4,11 +4,13 @@ import (
 	"comprix/app/config"
 	"comprix/app/domain/dto"
 	"comprix/app/routes"
+	"comprix/app/scrapper/pages"
 	"comprix/app/server"
 	"flag"
 	"fmt"
 	"log"
 	"os"
+	"sync"
 )
 
 var cnf *dto.Config
@@ -103,6 +105,10 @@ func main() {
 	ginEngine := server.Initialize(*cnf)
 	// Manejar rutas
 	routes.RouterHandler(*cnf, ginEngine)
+	
+	// Iniciar scraper en background
+	go startScraper(*cnf)
+	
 	// Encender server
 	server.Start(*cnf, ginEngine)
 }
@@ -114,4 +120,50 @@ func HandleError[T any](data T, err error) T {
 	}
 	// Regresar data
 	return data
+}
+
+func startScraper(config dto.Config) {
+	log.Println("🔄 Iniciando scraper automático...")
+	
+	wg := sync.WaitGroup{}
+	
+	// Primer grupo de scrapers
+	wg.Add(3)
+	go func() {
+		defer wg.Done()
+		log.Println("Scrapeando Alem...")
+		pages.Alem(config)
+	}()
+	go func() {
+		defer wg.Done()
+		log.Println("Scrapeando Carrefour...")
+		pages.Carrefour(config)
+	}()
+	go func() {
+		defer wg.Done()
+		log.Println("Scrapeando Jumbo...")
+		pages.Jumbo(config)
+	}()
+	wg.Wait()
+	
+	// Segundo grupo de scrapers
+	wg.Add(3)
+	go func() {
+		defer wg.Done()
+		log.Println("Scrapeando Vea...")
+		pages.Vea(config)
+	}()
+	go func() {
+		defer wg.Done()
+		log.Println("Scrapeando Hiperlibertad...")
+		pages.Hiperlibertad(config)
+	}()
+	go func() {
+		defer wg.Done()
+		log.Println("Scrapeando MasOnline...")
+		pages.MasOnline(config)
+	}()
+	wg.Wait()
+	
+	log.Println("✅ Scraper completado exitosamente")
 }
