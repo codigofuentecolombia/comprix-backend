@@ -20,4 +20,5 @@ func RouterHandler(config dto.Config, ginRouter *gin.Engine) {
 	CategoryRoutes(config, router)
 	CalendarRoutes(config, router)
 	AdminProductRoutes(config, router)
+	ScrapperRoutes(config, router)
 }
