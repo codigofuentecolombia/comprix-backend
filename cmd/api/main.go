@@ -112,8 +112,11 @@ func main() {
 	// Manejar rutas
 	routes.RouterHandler(*cnf, ginEngine)
 	
-	// Iniciar scraper en background
-	go startScraper(*cnf)
+	// NOTA: El scraper automático está deshabilitado por defecto
+	// porque requiere Chrome/Chromium instalado en el contenedor.
+	// Usa el endpoint POST /api/v1/admin/scrapper/start para ejecutarlo manualmente
+	// o descomenta la siguiente línea para ejecutarlo al iniciar:
+	// go startScraper(*cnf)
 	
 	// Encender server
 	server.Start(*cnf, ginEngine)
