@@ -108,6 +108,7 @@ func getEnvOrDefault(key, defaultValue string) string {
 }
 
 func main() {
+	log.Println("🚀 Comprix Backend v1.0.1 - Iniciando servidor...")
 	ginEngine := server.Initialize(*cnf)
 	// Manejar rutas
 	routes.RouterHandler(*cnf, ginEngine)
