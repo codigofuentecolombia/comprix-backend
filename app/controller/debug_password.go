@@ -4,8 +4,8 @@ import (
 	"comprix/app/domain/dto"
 	"comprix/app/repositories"
 	"comprix/app/server"
-	"comprix/app/services/auth"
 	"github.com/gin-gonic/gin"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type DebugPasswordController struct {
@@ -42,8 +42,9 @@ func (ctr *DebugPasswordController) TestPassword(c *gin.Context) {
 		return
 	}
 
-	// Verificar contraseña
-	isValid := auth.CheckPasswordHash(form.Password, user.Password)
+	// Verificar contraseña usando bcrypt directamente
+	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(form.Password))
+	isValid := err == nil
 
 	// Retornar información de debug
 	server.OkResponse(map[string]interface{}{
@@ -52,5 +53,6 @@ func (ctr *DebugPasswordController) TestPassword(c *gin.Context) {
 		"password_hash":    user.Password,
 		"password_tested":  form.Password,
 		"password_matches": isValid,
+		"bcrypt_error":     err,
 	})
 }
